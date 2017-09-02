@@ -21,11 +21,11 @@ using namespace std;
  	//llenar con valores y ceros
 	for(int i=0,j;i<dim;i++){
  		for(j=0;j<dim;j++){
- 			matriz[i][j]=rand()%90+10;
+ 			matriz[i][j]=rand()%9+1;
  			matrizVisual[i][j]=0;
 		 }
 	}
-	for(int i=0;i<dim;i++){
+	for(int i=0;i<dim*level;i++){
  			matriz[rand()%dim][rand()%dim]=0;
 	}
  }
@@ -39,14 +39,15 @@ using namespace std;
 		}
 		cout<<endl;
 		for(int i=0,j;i<dim;i++){
-			cout<<"X("<<i+1<<")";
+			cout<<"X("<<i+1<<")"<<"\t";
  			for(j=0;j<dim;j++){
- 				if(perdio){
- 					if(matriz[i][j]==0){
- 					cout<<"X"<<" ";	
-					 }
-				}
  				if(matrizVisual[i][j]==0){
+ 					if(perdio){
+ 						if(matriz[i][j]==0){
+ 						cout<<"X"<<" ";	
+						}else
+						cout<<'*'<<" ";
+					}else
 			 		cout<<'*'<<" ";
 			 	}else
 				cout<<matriz[i][j]<<" ";	 
@@ -55,20 +56,22 @@ using namespace std;
 		}
 		cout<<"X:"<<x<<endl;
 		cout<<"Y:"<<*y<<endl; 
-		salir:
-		cout<<"Ingrese Cordenada X: ";
-		cin>>x;
-		cout<<"Ingrese Cordenada Y: ";
-		cin>>*y;
-		if(max(x,*y)>dim|| min(x,*y)<1){
-			 cout<<"Coordenadas incorrectas"<<endl;
-			 goto salir;
+		if(!perdio){
+			salir:
+			cout<<"Ingrese Cordenada X: ";
+			cin>>x;
+			cout<<"Ingrese Cordenada Y: ";
+			cin>>*y;
+			if(max(x,*y)>dim|| min(x,*y)<1){
+				 cout<<"Coordenadas incorrectas"<<endl;
+				 goto salir;
+			}
 		}
  }
  void jugar(int dim){
  	bool flat=true;
  	bool perdio=false;
- 	int x,y;
+ 	int x=0,y=0;
  	do{
  		mostrarMatriz(dim,x,&y,perdio); 
 		if(matrizVisual[x-1][y-1]==0){
@@ -78,6 +81,7 @@ using namespace std;
 		if(matriz[x-1][y-1]==0){
 				flat=false;
 				perdio=true;
+				matrizVisual[x-1][y-1]=0;
 				mostrarMatriz(dim,x,&y,perdio); 
 				cout<<"Perdiste: "<<endl;
 				cout<<"Tu puntaje es : "<<c<<endl;
@@ -93,7 +97,7 @@ using namespace std;
  	int dim,level;
  	cout<<"ingrese Dimencion de la matriz: ";
  	cin>>dim;
- 	cout<<"ingrese Nivel 1 - 5:  ";
+ 	cout<<"ingrese Nivel 1 - 3:  ";
  	cin>>level;
 	BuscaMinas::crearMatriz(dim);
 	BuscaMinas::poblarMatriz(dim,level);
