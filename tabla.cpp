@@ -1,15 +1,12 @@
 #include <iostream>
 
 using namespace std;
-
-int main()
-{
+int main(){
 	for(int i=1;i<=12;i++){
 		cout<<"	"<<"Y("<<i<<")";
 	}
 	cout<<endl;
 int i=1,b=1;
-	
     salir2:
     if(i<=15){
     	cout<<"X("<<i<<")"<<"\t";	
