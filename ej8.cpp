@@ -69,7 +69,7 @@ using namespace std;
 		}
  }
  void jugar(int dim){
- 	bool flat=true;
+ 	bool flag=true;
  	bool perdio=false;
  	int x=0,y=0;
  	do{
@@ -79,7 +79,7 @@ using namespace std;
 			matrizVisual[x-1][y-1]=1;
 		}
 		if(matriz[x-1][y-1]==0){
-				flat=false;
+				flag=false;
 				perdio=true;
 				matrizVisual[x-1][y-1]=0;
 				mostrarMatriz(dim,x,&y,perdio); 
@@ -87,7 +87,7 @@ using namespace std;
 				cout<<"Tu puntaje es : "<<c<<endl;
 		}
 	
-	}while(flat);	
+	}while(flag);	
  }
  }
 
