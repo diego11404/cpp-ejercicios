@@ -2,7 +2,6 @@
 #include "ArrCarro.hpp"
 using namespace std;
 int main (){
-	
 	CarrCarro* arrCarr= new CarrCarro(10);
 	Ccarro carr;
 	arrCarr->Insert(&carr);
@@ -23,6 +22,9 @@ int main (){
 	cout<<"La longitud es:  "<<arrCarr->getLongitud()<<endl;
 	arrCarr->EliminarTodo();
 	cout<<"La longitud es:  "<<arrCarr->getLongitud()<<endl;
+	char* m = new char[10];
+	m=(char*)"hola";
+	cout<<m;
 	/*
 	// estatica - implicita
 	Ccarro carr;
