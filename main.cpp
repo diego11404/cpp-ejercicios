@@ -22,9 +22,6 @@ int main (){
 	cout<<"La longitud es:  "<<arrCarr->getLongitud()<<endl;
 	arrCarr->EliminarTodo();
 	cout<<"La longitud es:  "<<arrCarr->getLongitud()<<endl;
-	char* m = new char[10];
-	m=(char*)"hola";
-	cout<<m;
 	/*
 	// estatica - implicita
 	Ccarro carr;
