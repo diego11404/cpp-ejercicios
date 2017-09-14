@@ -19,8 +19,8 @@ struct SArregloCelular{
     SCelular** lista;
     short indice;
     short capacidad;
-    SArregloCelular(){
-        capacidad=10;
+    SArregloCelular(short capacidad){
+        this->capacidad=capacidad;
         lista= new SCelular*[capacidad];
         indice=-1;
      
@@ -44,33 +44,32 @@ struct SArregloCelular{
     }
 };
 int main(){
-    SArregloCelular* arrCel= new SArregloCelular();
+    SArregloCelular* arrCel= new SArregloCelular(10);
     short opcion;
     long nro;
     char continuar;
     SCelular* cel; 
     char* marca;
     do{
-        cout<<"Menu"<<endl;
-        cout<<"1.Insertar"<<endl;
-        cout<<"2.Mostrar"<<endl;
-        cout<<"3.Salir"<<endl;
+        cout<<"   Menu"<<endl;
+        cout<<" 1.Insertar "<<endl;
+        cout<<" 2.Mostrar "<<endl;
+        cout<<" 3.Salir "<<endl<<endl;
         cin>>opcion;
         switch(opcion){
         	case 1:
         		do{ 
         			marca =new char[10];
-	                cout<<"Ingrese numero: ";
-	                cin>>nro;
-	                cout<<"Ingrese Marca: ";
-	                cin>>marca;
+	                cout<<"Ingrese numero: ";cin>>nro;
+	                cout<<"Ingrese Marca: "; cin>>marca;
 	                cel = new SCelular(nro,(char*)marca);
 	                arrCel->insertar(cel);
-	                cout<<"Desea continuar S/N: ";
-	                cin>>continuar;
+	                cout<<"Desea continuar S/N: ";cin>>continuar;
             	}while(toupper(continuar)=='S');
+            	system("cls");
         		break;
         	case 2:
+        		system("cls");
         		for(int i=0; i<arrCel->getlongitud();i++){
         			arrCel->reportar(i);
 				}

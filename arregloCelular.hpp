@@ -5,11 +5,10 @@ struct SArregloCelular{
     SCelular** lista;
     short indice;
     short capacidad;
-    SArregloCelular(){
-        capacidad=10;
+    SArregloCelular(short capacidad){
+        this->capacidad=capacidad;
         lista= new SCelular*[capacidad];
         indice=-1;
-     
     }
     void insertar(SCelular* cel){
         indice++;

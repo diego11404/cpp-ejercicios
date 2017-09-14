@@ -8,7 +8,7 @@ class CarrCarro{
 public:
 	CarrCarro(short capacidad){
 		this->capacidad=capacidad;
-		arr = new Ccarro*[capacidad];
+		this->arr = new Ccarro*[capacidad];
 		indice=-1;	
 	} 
 	short getCapacidad(){return capacidad;}

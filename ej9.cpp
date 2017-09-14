@@ -37,13 +37,14 @@ int main()
   	//Dinamic
  	Auto* ad1= new Auto(15,(char*)"aventador",(char*)"lamborguini");
 	cout<<ad1->codigo<<" "<<ad1->nombre<<" "<<ad1->marca<<endl;	
-	Auto* ad2= new Auto(15,(char*)"astron",(char*)"Aston martin");
+	Auto* ad2= new Auto(17,(char*)"astron",(char*)"Aston martin");
 	cout<<ad1->codigo<<" "<<ad1->nombre<<" "<<ad1->marca<<endl;	
+	
 	Auto** arrAuto= new Auto*[10];
 	cout<<"ARRAY >>"<<arrAuto<<endl;
 	*arrAuto=ad1;
-	cout<<*arrAuto<<" "<<ad1<<endl;
 	*(arrAuto+1)=ad2;
+	cout<<(*(arrAuto+1))->codigo<<" "<<ad1<<endl;
 	arrAuto[2]=&a2;
 	arrAuto[3]=&a1;
 	arrAuto[4]=new Auto(16,(char*)"FTURBO",(char*)"Macclaren");

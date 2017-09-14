@@ -3,7 +3,7 @@
 using namespace std;
 int main(){
 	
-    SArregloCelular* arrCelu= new SArregloCelular();
+    SArregloCelular* arrCelu= new SArregloCelular(10);
     short opcion;
     long nro;
     char continuar;
