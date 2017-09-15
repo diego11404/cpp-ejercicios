@@ -13,5 +13,6 @@ class CarrMonitor{
 		void insertar();
 		void eliminarTodo();
 		void buscarxPos();
+		void mostrarTodo();
 };
 #endif

@@ -24,5 +24,4 @@ short CMonitor::getArea(){
 }
 void CMonitor::getAll(){
 	cout<<this->getMarca()<<" "<<this->getAncho()<<" "<<this->getAlto()<<endl;
-	getch();
 }

@@ -1,6 +1,7 @@
 #include "ArrMonitor.hpp"
 CarrMonitor::CarrMonitor(){}
 CarrMonitor::~CarrMonitor(){}
+
 void CarrMonitor::insertar(){
 	char* marca=new char[10];
 	short alto,ancho;
@@ -32,5 +33,11 @@ void CarrMonitor::buscarxPos(){
 	cout<<"Ingrese Posicion: "; cin>>pos;
 	CMonitor tmp = lista.at(pos);
 	tmp.getAll();
-
+}
+void CarrMonitor::mostrarTodo(){
+	system("cls");
+	cout<<"******Mostrar Todo*************"<<endl;
+	for(int i=0;i<this->lista.size();++i){
+		lista[i].getAll();
+	}
 }
