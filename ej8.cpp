@@ -81,7 +81,7 @@ using namespace std;
 		if(matriz[x-1][y-1]==0){
 				flag=false;
 				perdio=true;
-				matrizVisual[x-1][y-1]=0;
+				//matrizVisual[x-1][y-1]=0;
 				mostrarMatriz(dim,x,&y,perdio); 
 				cout<<"Perdiste: "<<endl;
 				cout<<"Tu puntaje es : "<<c<<endl;

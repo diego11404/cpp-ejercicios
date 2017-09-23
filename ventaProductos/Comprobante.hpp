@@ -30,5 +30,4 @@ void CComprobante::showBoleta(){
       listProductos->getLista()[i]->getAll();
   }
 }
-
 #endif

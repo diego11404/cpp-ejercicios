@@ -22,7 +22,7 @@ void menu(){
       case '4': listProducto->verTodo();system("pause"); break;
       case '5':       
       boleta=new CComprobante(listProducto,(char*)"07/07/07");
-      boleta->showBoleta();system("pause"); break; 
+      boleta->showBoleta();system("pause"); break;
     }
   }while(opt!='0');
   system("pause");

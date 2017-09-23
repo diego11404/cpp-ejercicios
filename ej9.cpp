@@ -52,5 +52,7 @@ int main()
 	for(int i=0;i<6;++i){
 			cout<<i<<" "<<arrAuto[i]->codigo<<" "<<(*(arrAuto+i))->nombre<<" "<<(*(arrAuto+i))->marca<<endl;
 	}
+	
+
    return 0;
 }

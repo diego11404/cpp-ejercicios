@@ -2,19 +2,18 @@
 //pasando valores por referencia
 using namespace std;
 int main(){
-	void convertir(double&,int*);
+	void convertir(double*,int*);
 	double num = 10.7;
 	int x=100;
 	int *p=&x;
 	cout<<num<<"-"<<x<<endl;
-	convertir(num,p);
+	convertir(&num,p);
 	cout<<num<<" -"<<x<<endl;
 
 	
 }
-void convertir(double& valor,int *ptr){
-	int pp=*ptr;
-	valor *= 2.54;
-	pp=500;
-	cout<<"NUEVO VALORES: "<<valor<<"--"<<pp<<endl;
+void convertir(double* valor,int *ptr){
+	*valor *= 2.54;
+	*ptr=500;
+	cout<<"NUEVO VALORES: "<<*valor<<"--"<<*ptr<<endl;
 }

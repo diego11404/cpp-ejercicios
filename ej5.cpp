@@ -9,7 +9,7 @@ int main(){
 		cout<<i<<" : "<<arr[i]<<endl;
 	}
 }
-void convertir(double *num){
+void convertir(double num[]){
 	for(int i=0;i<MAX;i++){
 			
 		*num++*= 2.54;
