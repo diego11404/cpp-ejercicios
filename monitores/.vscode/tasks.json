@@ -6,7 +6,7 @@
       "type": "shell",
       "command": "g++",
       "args": [
-        "-g","Monitor.cpp","ArrMonitor.cpp","main.cpp"
+        "-g","main.cpp"
       ],
       "group": {
         "kind": "build",

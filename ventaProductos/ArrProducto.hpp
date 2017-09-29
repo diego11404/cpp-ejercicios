@@ -4,53 +4,32 @@
 #define _ARR_PRODUCTO_HPP_
 class CarrProducto{
   vector<CProducto*> lista;
-  CProducto* producto;
 public:
   CarrProducto();
   ~CarrProducto();
   short getSize();
   vector<CProducto*> getLista();
-  void insertar();
-  void recuperar();
-  void eliminarPorPosicion();
+  void insertar(CProducto* obj);
+  CProducto* recuperar(short pos);
+  void eliminarPorPosicion(char opt,short pos);
   void verTodo();
 };
 CarrProducto::CarrProducto(){}
 CarrProducto::~CarrProducto(){}
 
-void CarrProducto::insertar(){
-  system("cls");
-  char* name=new char[10];
-  float precio;
-  short cantidad;
-  cout<<"*********Insertar************"<<endl;cin.ignore();
-  cout<<"Ingrese Nombre: ";cin>>name;
-  cout<<"Ingrese Precio: ";cin>>precio;
-  cout<<"Ingrese Cantidad: ";cin>>cantidad;
-  producto=new CProducto((char*)name,precio,cantidad);
-  lista.push_back(producto);
-  
+void CarrProducto::insertar(CProducto* obj){
+  lista.push_back(obj);
 }
-void CarrProducto::recuperar(){
-  system("cls");
-  short pos;
-  cout<<"********Recuperar************"<<endl;cin.ignore();
-  cout<<"ingrese Posicion: ";cin>>pos;
-  CProducto* tmp=lista.at(pos);
-  tmp->getAll();
+CProducto* CarrProducto::recuperar(short pos){
+  if(pos<this->lista.size())
+    return lista.at(pos);
+  else return nullptr;
 }
-void CarrProducto::eliminarPorPosicion(){
-  system("cls");
-  short pos;
-  char opt;
-  cout<<"****Eliminar X Posicion*****"<<endl;cin.ignore(); 
-  cout<<"Ingrese Posicion a eliminar: ";cin>>pos;
-  cout<<"Seguro de Desea Eliminar (s/n) "<<endl;cin>>opt;
+void CarrProducto::eliminarPorPosicion(char opt,short pos){
   if(toupper(opt)=='S'){  
     lista.erase(lista.begin()+pos);
     cout<<"Eliminado "<<endl;
-  }else 
-    cout<<"Ningun Cambio realizado"<<endl;
+  }else  cout<<"Ningun Cambio realizado"<<endl;
 }
 short CarrProducto::getSize(){
   return lista.size();

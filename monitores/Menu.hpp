@@ -1,7 +1,11 @@
 #include "ArrMonitor.hpp"
 void Menu(){
 	char opt;
-	CarrMonitor monitores;
+	char option;
+	char* marca;
+
+	short pos;
+	CarrMonitor* monitores = new CarrMonitor();
 	do{
 		system("cls");
 		cout<<"********Menu*********"<<endl;
@@ -12,10 +16,33 @@ void Menu(){
 		cout<<"	0.Salir  "<<endl;
 		cout<<"Ingrese Opcion: ";cin>>opt;
 		switch(opt){
-			case '1': monitores.insertar();break;
-			case '2': monitores.buscarxPos();system("pause");break;
-			case '3': monitores.eliminarTodo();break;
-			case '4': monitores.mostrarTodo(); system("pause");break;
+			case '1': {
+				system("cls");
+				marca=new char[10];
+				short alto;
+				short ancho;
+				cout<<"*******Registrar Monitor********"<<endl;cin.ignore();
+				cout<<"Ingrese Marca: "; cin>>marca;
+				cout<<"Ingrese Alto: ";  cin>>alto;
+				cout<<"Ingrese Ancho: "; cin>>ancho;
+				CMonitor moni((char*)marca,alto,ancho);
+				monitores->insertar(moni);
+				}	break;
+			case '2': {
+				system("cls");
+				cout<<"*****Buscar por posicion********"<<endl; 
+				cout<<"Ingrese Posicion: "; cin>>pos;
+				bool tmp= monitores->buscarxPos(pos);
+				if(!tmp) cout<<"VACIO"<<endl;
+				system("pause");
+			}break;
+			case '3': 
+				system("cls");
+				cout<<"*****Eliminar Todo********"<<endl; 
+				cout<<"Seguro de desea continuar (s/n) ";cin>>option;
+				monitores->eliminarTodo(option);
+				break;
+			case '4': monitores->mostrarTodo(); system("pause");break;
 		}
 	}while(opt!='0');
 	system("pause");	
