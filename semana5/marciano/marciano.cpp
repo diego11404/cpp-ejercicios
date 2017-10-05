@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream> 
 #include "venta.hpp"
 
 int main(){
@@ -41,6 +42,9 @@ int main(){
     }
   }while(opt!='0');
 
+  cout<<"Guardando"<<endl;
+  v.guardar();
+  system("pause");
   
   
   
