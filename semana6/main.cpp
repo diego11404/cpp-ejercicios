@@ -3,11 +3,10 @@
 #include "CAlumno.hpp"
 #include "Aula.hpp"
 int main(){
-
-  SLista<int>* enteros = new SLista<int>();
-  SLista<float>* flotantes = new SLista<float>();
-  SLista<SAula*>* aulas = new SLista<SAula*>();
-  SLista<CAlumno*>* alumnos = new SLista<CAlumno*>();
+  CLista<int>* enteros = new CLista<int>();
+  CLista<float>* flotantes = new CLista<float>();
+  CLista<SAula*>* aulas = new CLista<SAula*>();
+  CLista<CAlumno*>* alumnos = new CLista<CAlumno*>();
   
   for(int i=0;i<10;++i){
     enteros->anteponer((i+1)*10);
@@ -21,7 +20,6 @@ int main(){
     std::cout<<"Aulas: "<<aulas->recuperar(i)->toString()<<"\t";
     std::cout<<"Alumnos: "<<alumnos->recuperar(i)->toString()<<std::endl;
   }
-
   system("pause");  
   return 0;
 }

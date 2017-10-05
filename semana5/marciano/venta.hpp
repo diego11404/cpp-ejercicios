@@ -1,5 +1,6 @@
 #include "marciano.hpp"
 #include <vector>
+#include <fstream> 
 using namespace std;
 struct SVenta{
   vector<SMarciano> lista;
@@ -13,10 +14,10 @@ struct SVenta{
     return lista.at(pos);
   }
   void  guardar(){
-	  ofstream archivo;
-	  ofstream.open("marcianos.txt");
+	  std::ofstream archivo("marcianos.txt", std::ofstream::out);
 	  for(size_t i=0;i<lista.size();++i){
-	archivo<<lista.at(i).sabor<<","<<lista.at(i).precio<<endl;
-	  }
+	    archivo<<lista.at(i).sabor<<","<<lista.at(i).precio<<endl;
+    }
+    archivo.close();
   }
 };

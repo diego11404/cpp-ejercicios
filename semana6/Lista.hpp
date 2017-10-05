@@ -1,59 +1,57 @@
+#include "CNodo.hpp"
 #include <iostream>
 #ifndef _LISTA_HPP_
 #define _LISTA_HPP_
-template<typename T> struct SNodo{
-  SNodo<T>* nodos;
-  T elemento;
-  SNodo(T elemento);
-};
-template<typename T> SNodo<T>::SNodo(T element){
-  this->elemento=element;
-  this->nodos=nullptr;
-}
 //SLISTA 
-template<typename T> struct SLista{
-  SNodo<T>* inicio;
-  std::size_t nElementos;  
-  
-  SLista();
-  void anteponer(T e);
+template<typename T> class CLista{
+  CNodo<T>* inicio;
+  std::size_t nElementos;
+public:
+  CLista();
+  CNodo<T>* getInicio();
   std::size_t getNelementos();
-  SNodo<T>* buscarXpos(short pos);
+  void anteponer(T e);  
+  CNodo<T>* buscarXpos(short pos);
   T recuperar(short pos);
   void InsertarFinal(T e);
 };
 //Implementacion
-template<typename T> void SLista<T>::anteponer(T e){
-  SNodo<T>* n= new SNodo<T>(e);
-  if(inicio!=nullptr){
-    n->nodos=inicio;
-  }
-  inicio=n;
-  nElementos++;
-}
-template<typename T> SLista<T>::SLista(){
+template<typename T> CLista<T>::CLista(){
   this->inicio=nullptr;
   this->nElementos=0;
 }
-template<typename T> std::size_t SLista<T>::getNelementos(){
+template<typename T>
+CNodo<T>* CLista<T>::getInicio(){
+  return this->inicio;
+}
+template<typename T> std::size_t CLista<T>::getNelementos(){
   return this->nElementos;
 }
-template<typename T>  SNodo<T>* SLista<T>::buscarXpos(short pos){
-  SNodo<T>* tmp = inicio;
+template<typename T> void CLista<T>::anteponer(T e){
+  CNodo<T>* n= new CNodo<T>(e);
+  if(inicio!=nullptr){
+    n->setNodos(inicio);
+  }
+  this->inicio=n;
+  nElementos++;
+}
+template<typename T>  CNodo<T>* CLista<T>::buscarXpos(short pos){
+  CNodo<T>* tmp = inicio;
   if(pos >= 0 && pos< this->nElementos){
     for(int i=0;i<pos;++i){
-        tmp = tmp->nodos;
+        tmp = tmp->getNodos();
     }
     return tmp;
   }else return nullptr;
 }
-template<typename T> T SLista<T>::recuperar(short pos){
-  return buscarXpos(pos)->elemento;
+
+template<typename T> T CLista<T>::recuperar(short pos){
+  return buscarXpos(pos)->getElemento();
 }
-template<typename T> void SLista<T>::InsertarFinal(T e){
-  SNodo<T>* nuevo= new SNodo<T>(e);
-  SNodo<T>* tmp= buscarXpos(this->nElementos-1);
-  tmp->nodos = nuevo;
+template<typename T> void CLista<T>::InsertarFinal(T e){
+  CNodo<T>* nuevo= new CNodo<T>(e);
+  CNodo<T>* tmp= buscarXpos(this->nElementos-1);
+  tmp->setNodos(nuevo);
   this->getNelementos++;
 }
 #endif
