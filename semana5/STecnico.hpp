@@ -2,11 +2,11 @@
 struct STecnico{
   char* nombre;
   char* apellido;
-  short dni;
-  STecnico(char* nombre, char*apellido, short dni);
+  long dni;
+  STecnico(char* nombre, char*apellido, long dni);
   void getAll();
 };
-STecnico::STecnico(char* nombre, char*apellido, short dni){
+STecnico::STecnico(char* nombre, char*apellido, long dni){
   this->nombre=nombre;
   this->apellido=apellido;
   this->dni=dni;

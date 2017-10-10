@@ -48,12 +48,12 @@ bool CColaUsuario::insertar(CUsuario* obj){
 
 }
 void CColaUsuario::atender(){
-  switch(toupper(listaUsuario[0]->gettypeUser())){
-    case 'A':this->nAlumnos++; break;
-    case 'D':this->nDocentes++; break;
-    case 'P':this->nPadres++; break;
-  }
-  if(0<this->indice){
+  if(this->indice>=0){
+    switch(toupper(listaUsuario[0]->gettypeUser())){
+      case 'A':this->nAlumnos++; break;
+      case 'D':this->nDocentes++; break;
+      case 'P':this->nPadres++; break;
+    }
     for(size_t i=0;i<=this->indice;i++){
       if(listaUsuario[i+1]!=nullptr){
         listaUsuario[i]=listaUsuario[i+1];
@@ -62,35 +62,42 @@ void CColaUsuario::atender(){
       }
     }
     indice--;
-  }
+    std::cout<<"Atendido"<<std::endl;
+  }else std::cout<<"Cola Vacia"<<std::endl;;
 }
 void CColaUsuario::atenderXtipo(char tipo){
   short pos;
   bool flag=false;
-  for(size_t i=0;i<=this->indice;++i){
-    if(listaUsuario[i]->gettypeUser()==tipo){
-      pos=i;
-      goto ir;
+  if(this->indice>=0){
+    for(size_t i=0;i<=this->indice;++i){
+      if(listaUsuario[i]->gettypeUser()==tipo){
+        pos=i;
+        switch(toupper(tipo)){
+          case 'A':this->nAlumnos++; break;
+          case 'D':this->nDocentes++; break;
+          case 'P':this->nPadres++; break;
+        }
+        goto ir;
+      }else{
+        std::cout<<"No encontrado"<<std::endl;
+        goto salir;
+      } 
     }
-  }
-  ir:
-  for(int i=pos;i<this->indice;++i){
-    if(i>=this->indice){
-      listaUsuario[i]=nullptr;   
-    }else listaUsuario[i]=listaUsuario[i+1];
-  }
-  indice--;
-  switch(toupper(tipo)){
-    case 'A':this->nAlumnos++; break;
-    case 'D':this->nDocentes++; break;
-    case 'P':this->nPadres++; break;
-  }
+    ir:
+    for(int i=pos;i<this->indice;++i){
+      if(i>=this->indice){
+        listaUsuario[i]=nullptr;   
+      }else listaUsuario[i]=listaUsuario[i+1];
+    }
+    indice--;
+    std::cout<<"Atendido"<<std::endl;
+  }else std::cout<<"Cola vacia"<<std::endl;
+  salir:;
   //listaUsuario[pos+1]=nullptr;
 }
 void CColaUsuario::mostrarCola(){
   for(int i=0;i<=this->indice;++i){
-      std::cout<<i<<". ";
-      listaUsuario[i]->getAll();
+      std::cout<<i<<". "<<**(listaUsuario+i)<<std::endl;
   }
 }
 void CColaUsuario::mostrarAtendidos(){

@@ -7,7 +7,6 @@ struct Sdispositivo{
   Sdispositivo();
   Sdispositivo(char* nombre,char* marca,char*codigo,char*color);
   void getAll();
-  
 };
 Sdispositivo::Sdispositivo(){
     this->nombre=(char*)"nada";

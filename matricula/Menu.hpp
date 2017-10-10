@@ -13,12 +13,11 @@ namespace Matricula{
 		char opt;
 		do{
 			system("cls");
-			cout<<"***********Menu**************"<<endl;	
 			cout<<"*****************************"<<endl;	
-			cout<<"*1.Registrar Matricula         *"<<endl;			
-			cout<<"*2.Eliminar Matricula       *"<<endl;	
-			cout<<"*3.Mostrar Registro         *"<<endl;
-			cout<<"*0.Salir                    *"<<endl;
+			cout<<"*1.Registrar Matricula"<<endl;			
+			cout<<"*2.Eliminar Matricula"<<endl;	
+			cout<<"*3.Mostrar Registro"<<endl;
+			cout<<"*0.Salir"<<endl;
 			cout<<"Ingrese una opcion: ";cin>>opt;
 			switch(opt){
 				case '1':
@@ -56,5 +55,6 @@ namespace Matricula{
 				break;	
 			}
 		}while(opt!='0');
+		system("pause");
 	}
 }

@@ -1,5 +1,4 @@
 #include "FichaMatricula.hpp"
-
 namespace Matricula{
 	class CAlumno{
 		char* name;
