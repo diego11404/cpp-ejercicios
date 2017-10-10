@@ -74,12 +74,11 @@ void CEstacionamiento::buscarXPlaca(char* placa) {
 	for (size_t i = 0; i < this->aforo; ++i) {
 		if(arrVehiculo[i]!=nullptr){
 			if(strcmp(arrVehiculo[i]->getplaca(),placa)==0){
-				 arrVehiculo[i]->getAll();
+				 std::cout<<*arrVehiculo[i]<<std::endl;
 			}
 		}
 	}
 }
-
 void CEstacionamiento::ObtenerDisponible(bool flag) {
 	for (int i = 0; i < aforo; ++i) {
 		if(flag){
@@ -123,7 +122,7 @@ void CEstacionamiento::verTodo() {
 	for(int i=0;i < this->aforo;++i){
 		if(arrVehiculo[i]!=nullptr){
 			cout<<i<<". ";
-			arrVehiculo[i]->getAll();
+			std::cout<<*(arrVehiculo[i])<<std::endl;
 		}
 	}
 }

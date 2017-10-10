@@ -8,7 +8,7 @@ private:
 	char* modelo;
 	char* placa;
 	char* color;
-	short anio;				
+	short anio;	
 public:						
 	CVehiculo(char* marca, char* modelo, char* placa, char* color, short anio);
 	~CVehiculo();// liberar memoria .-destructor
@@ -24,8 +24,16 @@ public:
 	void setplaca(char* placa);
 	void setcolor(char* color);
 	void setanio(short anio);
-	void getAll();
-};							
+
+	friend std::ostream& operator<<(std::ostream& str,const CVehiculo& v);
+	friend void fFriend(CVehiculo&);	
+};
+std::ostream& operator<<(std::ostream& str,const CVehiculo& v){
+	return str<<v.marca<<" "<<v.modelo<<" "<<v.placa<<" "<<v.color<<" "<<v.anio;
+}
+void fFriend(CVehiculo& v){
+	v.anio=888;
+}
 CVehiculo::CVehiculo(char* marca, char* modelo, char* placa, char* color, short anio):
 	marca(marca), modelo(modelo), placa(placa), color(color), anio(anio){}
 CVehiculo::CVehiculo() {
@@ -47,9 +55,9 @@ void CVehiculo::setmodelo(char* modelo) { this->modelo=modelo; }
 void CVehiculo::setplaca(char* placa)  {  this->placa=placa; }
 void CVehiculo::setcolor(char* color)  {  this->color=color; }
 void CVehiculo::setanio(short anio)   { this->anio=anio; }
-void CVehiculo::getAll(){
-	cout<<this->marca<<" "<<this->modelo<<" "<<this->placa<<" "<<this->color<<" "<<this->anio<<endl;
-}
+//string CVehiculo::toString(){
+//	return this->marca+" "+this->modelo+" "+this->placa+" "+this->color+" "+this->anio;
+//}
 #endif						
 							
 							

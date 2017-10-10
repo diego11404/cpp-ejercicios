@@ -3,7 +3,6 @@ void Menu(){
 	char opt;
 	char option;
 	char* marca;
-
 	short pos;
 	CarrMonitor* monitores = new CarrMonitor();
 	do{

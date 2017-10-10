@@ -1,8 +1,10 @@
 #include "SLaboratorio.hpp"
+#include "STecnico.hpp"
 using namespace std;
 int main(){
   SLaboratorio* lab= new SLaboratorio(10,20);
   Sdispositivo* disposi;
+  STecnico* tecnico;
   char opt;
   char* nombre;
   char* marca;
@@ -10,7 +12,7 @@ int main(){
   char* color;
   char* pabellon;
   char* apellido;
-  short dni;
+  long dni;
   short capacidad;
   short aula;
   short pos;
@@ -61,11 +63,14 @@ int main(){
         system("pause");        
         break;
       case '4':
+        system("cls");      
         nombre= new char[10];
         apellido= new char[10];
         cout<<"Ingrese Nombre: "; cin>>nombre;
         cout<<"Ingrese apellido: "; cin>>apellido;
         cout<<"Ingrese DNI: "; cin>>dni;
+        tecnico=new STecnico((char*)nombre,(char*)apellido,dni);
+        system("pause");        
         break;
       case '5':
         pabellon = new char[10];

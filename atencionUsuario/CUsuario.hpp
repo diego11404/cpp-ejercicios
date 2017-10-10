@@ -16,7 +16,12 @@ public:
   short getuserCode();
   short getticker();
   void getAll();
+  friend std::ostream& operator<<(std::ostream&,const CUsuario&);
 };
+std::ostream& operator<<(std::ostream& strm,const CUsuario& obj){
+  std::cout<<obj.name<<" "<<obj.lastName<<" "<<obj.typeUser<<" "<<obj.userCode<<" "<<obj.ticker;
+  
+}
 CUsuario::CUsuario(char* name,char* lastName,char typeUser,short userCode,short ticker){
     this->name=name;
     this->lastName=lastName;
@@ -30,6 +35,6 @@ char  CUsuario::gettypeUser(){return this->typeUser;}
 short CUsuario::getuserCode(){return this->userCode;}
 short CUsuario::getticker(){return this->ticker;}
 void CUsuario::getAll(){
-  std::cout<<this->name<<" "<<this->lastName<<" "<<this->typeUser<<" "<<this->userCode<<" "<<this->ticker<<std::endl;
+  std::cout<<this->name<<" "<<this->lastName<<" "<<this->typeUser<<" "<<this->userCode<<" "<<this->ticker<<std::endl;  
 }
 #endif

@@ -37,7 +37,6 @@ bool CarrMonitor::buscarxPos(short pos){
 		lista.at(pos).getAll();
 		return true;
 	}
-
 }
 void CarrMonitor::mostrarTodo(){
 	system("cls");

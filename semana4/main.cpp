@@ -1,5 +1,4 @@
 #include "Estacionamiento.hpp"
-
 int main() {
 	CEstacionamiento* e = new CEstacionamiento(10);
 	CVehiculo* tmp;
@@ -90,12 +89,18 @@ int main() {
 				system("cls");			
 				cout<<"Indique la posicion: "; cin>>pos;
 				if((tmp=e->verXPosicion(pos))!=nullptr)
-					tmp->getAll();
+					std::cout<<*tmp<<endl;
 				else cout<<"Posicion vacia"<<endl;
 				system("pause");
 			break;
 		}
 	}while(opt!='0');
+	delete e;
+	delete tmp;
+	delete marca;
+	delete modelo;
+	delete placa;
+	delete color;
 	/*
 	int x=88;
 	int b=889;
