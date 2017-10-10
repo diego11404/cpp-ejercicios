@@ -44,7 +44,6 @@ template<typename T>  CNodo<T>* CLista<T>::buscarXpos(short pos){
     return tmp;
   }else return nullptr;
 }
-
 template<typename T> T CLista<T>::recuperar(short pos){
   return buscarXpos(pos)->getElemento();
 }

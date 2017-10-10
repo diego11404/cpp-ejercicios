@@ -13,5 +13,4 @@ struct SAula{
   }
 };
 SAula::SAula(short nro,short piso,char pabellon, short capacidad): nro(nro),piso(piso),pabellon(pabellon),capacidad(capacidad) {}
-
 #endif
