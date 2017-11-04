@@ -1,7 +1,7 @@
 #include "Items.hpp"
 #include <list>
-#include <string>
-#include <cstring>
+//#include <string>
+//#include <cstring>
 #include <iostream>
 #include <fstream>
 
@@ -36,7 +36,7 @@ public:
     if(money-obj->getPrecio()>0){
       mochila->push_back(obj);
       money=money-obj->getPrecio();
-    }else std::cout<<"there is not money"<<std::endl;
+    }else std::cout<<"there is not money "<<this->nombre<<std::endl;
   }
   void vender(int pos){
     std::list<CItems*>::iterator it = mochila->begin();

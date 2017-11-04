@@ -2,8 +2,6 @@
 #define _ITEMS_HPP_
 
 #include <string>
-#include <cstring>
-
 class CItems{
   short precio;
   std::string nombre;
