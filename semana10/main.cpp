@@ -8,7 +8,6 @@ int main(){
   //  tienda->Insert(new CItems(12+1,"Balsamo"+std::to_string(i),"12"+std::to_string(i),5+1));
   //}
   //tienda->Save();
-
   CController* contr = new CController();
   contr->crearItems();
   contr->crearTienda();
