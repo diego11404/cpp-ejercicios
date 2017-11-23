@@ -78,6 +78,7 @@ namespace LQS {
 		int	 dy2;
 		short control;
 		int sx;
+		unsigned int time;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -93,6 +94,7 @@ namespace LQS {
 			// timer1
 			// 
 			this->timer1->Enabled = true;
+			this->timer1->Interval = 1;
 			this->timer1->Tick += gcnew System::EventHandler(this, &FrmJuego::timer1_Tick);
 			// 
 			// FrmJuego
@@ -106,7 +108,6 @@ namespace LQS {
 			this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmJuego::FrmJuego_Paint);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &FrmJuego::FrmJuego_KeyDown);
 			this->ResumeLayout(false);
-
 		}
 #pragma endregion
 	private: System::Void FrmJuego_Load(System::Object^  sender, System::EventArgs^  e) {
@@ -159,35 +160,42 @@ namespace LQS {
 			sx = 1;
 		}
 		else if (e->KeyCode == Keys::Space && control ==2) {
-			sx = -1;
+			sx=-1;
 		}
 	}
 	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
-		Rectangle r1(columna*ancho, fila*alto, ancho, alto);
-		Rectangle r2(columna*ancho, fila2*alto, ancho, alto);
-		lienzo->DrawImage(imagen, 0, 0, 1000, 400);
-		lienzo->DrawImage(p1, dx, dy, r1, GraphicsUnit::Pixel);
-		lienzo->DrawImage(p2, dx2, dy2, r2, GraphicsUnit::Pixel);
-		lienzo->FillRectangle(Brushes::Red, 10, 10, vida1*5, 20);
-		lienzo->FillRectangle(Brushes::Blue, 600, 10, vida2*5, 20);
-		Rectangle col(dx, dx, ancho, alto);
-		Rectangle col2(dy, dy2, ancho, alto);
-		sx++;
-		if (control == 1) {
-			lienzo->FillEllipse(Brushes::Black, sx*(dx+10),dy+5,30,30);
-		}
-		else if (control == 2) {
-			lienzo->FillEllipse(Brushes::Black, -sx*(dx2+10), dy2 + 5, 30, 30);
-		}
+		time += 16.6;
+		if (time >1000/60 ) {
+			Rectangle r1(columna*ancho, fila*alto, ancho, alto);
+			Rectangle r2(columna*ancho, fila2*alto, ancho, alto);
+			lienzo->DrawImage(imagen, 0, 0, 1000, 400);
+			lienzo->DrawImage(p1, dx, dy, r1, GraphicsUnit::Pixel);
+			lienzo->DrawImage(p2, dx2, dy2, r2, GraphicsUnit::Pixel);
+			lienzo->FillRectangle(Brushes::Red, 10, 10, vida1 * 5, 20);
+			lienzo->FillRectangle(Brushes::Blue, 600, 10, vida2 * 5, 20);
+			Rectangle col(dx, dx, ancho, alto);
+			Rectangle col2(dy, dy2, ancho, alto);
+			sx++;
+			if (control == 1) {
+				lienzo->FillEllipse(Brushes::Black, sx*(dx + 10), dy*sx, 30, 30);
+			}
+			else if (control == 2) {
+				lienzo->FillEllipse(Brushes::Black, sx*(dx2 + 10), dy2 *sx, 30, 30);
+			}
 
-		if (col.IntersectsWith(col2) && control == 1) vida2--;
-		else if(col2.IntersectsWith(col) && control == 2)vida1--;
-
-
-		columna++;
-		if (columna > 3) {
-			columna = 0;
+			if (col.IntersectsWith(col2) && control == 1)
+				vida2--;
+			else {
+				if (col2.IntersectsWith(col) && control == 2)
+					vida1--;
+			}
+			columna++;
+			if (columna > 3) {
+				columna = 0;
+			}
 		}
+		
+		
 	}
 	};
 }
