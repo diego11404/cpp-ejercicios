@@ -39,8 +39,7 @@ short CColaUsuario::getnDocentes(){return this->nDocentes;}
 short CColaUsuario::getnPadres(){return this->nPadres;}
 bool CColaUsuario::insertar(CUsuario* obj){
   if(++indice<this->capacidad){
-    listaUsuario[indice]=obj;
-    return true;
+    return listaUsuario[indice]=obj, true;
   }else {
     --indice;
     return false;

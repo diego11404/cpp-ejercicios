@@ -1,4 +1,6 @@
 #include "CColaUsuario.hpp"
+#include <cstdlib>
+
 int main(){
   char opt;
   bool flag;

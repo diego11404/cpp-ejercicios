@@ -1,9 +1,5 @@
 {
-  "files.associations": {
-    "typeinfo": "cpp",
-    "system_error": "cpp",
-    "xlocale": "cpp",
-    "iostream": "cpp",
-    "ostream": "cpp"
-  }
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
+    "C_Cpp.intelliSenseEngine": "Default",
+    "C_Cpp.autocomplete": "Default"
 }
