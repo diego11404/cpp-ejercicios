@@ -9,6 +9,7 @@ private:
   short userCode;
   short ticker; 
 public:
+  CUsuario();
   CUsuario(char* name,char* lastName,char typeUser,short userCode,short ticker);
   char* getname();
   char* getlastName();
@@ -22,6 +23,7 @@ std::ostream& operator<<(std::ostream& strm,const CUsuario& obj){
   std::cout<<obj.name<<" "<<obj.lastName<<" "<<obj.typeUser<<" "<<obj.userCode<<" "<<obj.ticker;
   
 }
+CUsuario::CUsuario(){}
 CUsuario::CUsuario(char* name,char* lastName,char typeUser,short userCode,short ticker){
     this->name=name;
     this->lastName=lastName;

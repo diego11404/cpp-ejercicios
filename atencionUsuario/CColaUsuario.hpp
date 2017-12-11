@@ -1,8 +1,12 @@
-#include "CUsuario.hpp"
 #ifndef _CCOLA_USER__
 #define _CCOLA_USER__
+#include "CLista.hpp"
+#include "CUsuario.hpp"
+#include <fstream>
+#include <vector>
 class CColaUsuario{
   CUsuario** listaUsuario;
+  CLista<CUsuario*> *userList;
   short capacidad;
   short indice;
   short nAlumnos;
@@ -10,6 +14,7 @@ class CColaUsuario{
   short nPadres;
 public:
   CColaUsuario(short capacidad);
+  CColaUsuario();
   short getCapacidad();
   short getIndice();
   short getnAlumnos();
@@ -20,7 +25,79 @@ public:
   void atenderXtipo(char tipo);
   void mostrarCola();
   void mostrarAtendidos();
+
+  bool insertToList(CUsuario*);
+  bool attend();
+  void showQueue();
+  void showAttended();
+  void type(char);
+  CLista<CUsuario*>* getCola();
+  void Save();
+  void Read();
 };
+CColaUsuario::CColaUsuario(){
+    this->userList = new CLista<CUsuario*>();
+    this->capacidad=20;
+    this->indice=0;
+    this->nAlumnos=0;
+    this->nDocentes=0;
+    this->nPadres=0;
+}
+void CColaUsuario::Read(){
+  std::string linea;
+  std::ifstream read("datos.txt");
+  for(int i=0;i<this->capacidad;i++){
+    std::getline(read,linea);
+    std::cout<<linea<<"\n";
+  }
+  read.close();
+}
+void CColaUsuario::Save(){
+  std::ofstream archivo("datos.txt", std::ios::out);
+  for(int i=0;i<this->indice;i++){
+    auto aux = this->userList->searchNext(i)->getElement();
+    archivo<<i<<". "<<aux->getname()<<","<<aux->gettypeUser()<<","<<aux->getuserCode()<<","<<aux->getticker()<<"\n";  
+  }
+  archivo.close();
+}
+CLista<CUsuario*>* CColaUsuario::getCola(){
+  return this->userList;
+}
+void CColaUsuario::type(char type){
+  switch(std::toupper(type)){
+    case 'A': this->nAlumnos++;
+    break;
+    case 'D': this->nDocentes++;
+    break;
+    case 'P': this->nPadres++;
+    break;
+  }
+}
+bool CColaUsuario::insertToList(CUsuario* obj){
+  if(this->indice < this->capacidad){
+   this->indice++;
+   this->userList->insertEnd(obj);
+   return true;
+  }return false;
+}
+bool CColaUsuario::attend(){
+  if(0 < this->indice){
+    CColaUsuario::type(this->userList->getStart()->getElement()->gettypeUser());
+    this->userList->eraseNext(0);
+    this->indice--;
+  }else return false; 
+}
+void CColaUsuario::showQueue(){
+  for(int i=0;i < this->indice;i++){
+    std::cout<<i<<". "<<*this->userList->searchNext(i)->getElement()<<std::endl;
+    //this->userList->searchNext(i)->getElement()->getAll();
+  }
+}
+void CColaUsuario::showAttended(){
+  std::cout<<"N Alumnos "<<this->nAlumnos<<std::endl;
+  std::cout<<"N Docentes "<<this->nDocentes<<std::endl;
+  std::cout<<"N Padres "<<this->nPadres<<std::endl;
+}
 CColaUsuario::CColaUsuario(short capacidad){
   this->capacidad=capacidad;
   this->indice=-1;

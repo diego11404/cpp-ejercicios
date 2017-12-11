@@ -26,7 +26,7 @@ public:
 };
 template<typename T> void CLista<T>::anteponer(T elemento){
     nuevo = new CNodo<T>(elemento);
-      this->inicio=(this->inicio==nullptr && this->setfin(nuevo) ,
+      this->inicio=(this->inicio==nullptr && this->setfin(nuevo),
       inicio!=nullptr && (this->inicio->setanterior(nuevo) && nuevo->setsiguiente(inicio)),nuevo);
       this->nElementos++;
 } 

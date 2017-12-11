@@ -43,22 +43,21 @@ int main(){
         std::cout<<file<<"\n";
     }
     leer.close();
-
     //for(int i=0;i < entero.capacidad;i++)
     //    std::cout<<i<<"."<<entero.iterator(i)->elemento<<endl;
     //std::cout<<entero.iterator(4)->elemento<<endl;
-    deque<SCola<int>*> *mydeque = new deque<SCola<int>*>();
+    deque<SCola<int*>*> *mydeque = new deque<SCola<int*>*>();
     for(int i=0;i<2;++i){
-        SCola<int> *col= new SCola<int>();
+        SCola<int*> *col= new SCola<int*>();
         mydeque->push_back(col);
         for(int j=0;j<15;++j){
-            col->insertar(j);
+            col->insertar(new int(rand()%10+10));
         }
     }
-    std::deque<SCola<int>*>::iterator it = mydeque->begin();
+    std::deque<SCola<int*>*>::iterator it = mydeque->begin();
     for(;it!=mydeque->end();it++){
         for(int j=0;j<15;j++)
-            cout<<(*it)->iterator(j)->elemento<<endl;
+            cout<<*(*it)->iterator(j)->elemento<<endl;
     }
     return 0;
     

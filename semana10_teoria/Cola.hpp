@@ -52,7 +52,7 @@ template<class T> struct SCola{
         return this->inicio;
     }
     Nodo<T>* iterator(int pos){
-        Nodo<int>* aux = this->inicio;
+        Nodo<T>* aux = this->inicio;
         int c=0;
         if(pos>=0 && pos < this->capacidad){
             while(aux->siguiente!=nullptr && c++!=(pos) ){
